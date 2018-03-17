@@ -197,11 +197,11 @@ namespace UserAgentParser
         public bool IsMobile { get; set; } = false;
 
         // Current values
-        public string Platform { get; set; }
-        public string Browser { get; set; }
-        public string Version { get; set; }
-        public string Mobile { get; set; }
-        public string Robot { get; set; }
+        public string Platform { get; set; } = "";
+        public string Browser { get; set; } = "";
+        public string Version { get; set; } = "";
+        public string Mobile { get; set; } = "";
+        public string Robot { get; set; } = "";
 
         public UserAgent(string userAgentString = null)
         {

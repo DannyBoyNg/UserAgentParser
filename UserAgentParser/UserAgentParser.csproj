@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Company />
+    <Authors>DannyBoyNg</Authors>
+    <PackageId>DannyBoyNg.UserAgentParser</PackageId>
+    <PackageProjectUrl>https://github.com/DannyBoyNg/UserAgentParser</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/DannyBoyNg/UserAgentParser/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
 
 </Project>

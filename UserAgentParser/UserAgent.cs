@@ -6,19 +6,7 @@ namespace UserAgentParser
 {
     public class UserAgent
     {
-        protected string _Agent = null;
-        protected bool _IsBrowser = false;
-        protected bool _IsRobot = false;
-        protected bool _IsMobile = false;
-
-        // Current values
-        protected string _Platform { get; set; }
-        protected string _Browser { get; set; }
-        protected string _Version { get; set; }
-        protected string _Mobile { get; set; }
-        protected string _Robot { get; set; }
-
-        protected Dictionary<string, string> platforms = new Dictionary<string, string>() {
+        static Dictionary<string, string> platforms = new Dictionary<string, string>() {
             {"windows nt 10.0", "Windows 10"},
             {"windows nt 6.3", "Windows 8.1"},
             {"windows nt 6.2", "Windows 8"},
@@ -63,7 +51,7 @@ namespace UserAgentParser
             {"symbian", "Symbian OS"},
         };
 
-        protected Dictionary<string, string> browsers = new Dictionary<string, string>()
+        static Dictionary<string, string> browsers = new Dictionary<string, string>()
         {
             {"OPR", "Opera"},
             {"Flock", "Flock"},
@@ -95,7 +83,7 @@ namespace UserAgentParser
             {"Ubuntu", "Ubuntu Web Browser"},
         };
 
-        protected Dictionary<string, string> mobiles = new Dictionary<string, string>()
+        static Dictionary<string, string> mobiles = new Dictionary<string, string>()
         {
             // Legacy
             {"mobileexplorer", "Mobile Explorer"},
@@ -180,7 +168,7 @@ namespace UserAgentParser
             {"cellphone", "Generic Mobile"},
         };
 
-        protected Dictionary<string, string> robots = new Dictionary<string, string>()
+        static Dictionary<string, string> robots = new Dictionary<string, string>()
         {
             {"googlebot", "Googlebot"},
             {"msnbot", "MSNBot"},
@@ -203,6 +191,18 @@ namespace UserAgentParser
             {"Uptimebot", "Uptimebot"},
         };
 
+        protected string _Agent = null;
+        public bool IsBrowser { get; set; } = false;
+        public bool IsRobot { get; set; } = false;
+        public bool IsMobile { get; set; } = false;
+
+        // Current values
+        public string Platform { get; set; }
+        public string Browser { get; set; }
+        public string Version { get; set; }
+        public string Mobile { get; set; }
+        public string Robot { get; set; }
+
         public UserAgent(string userAgentString = null)
         {
             if (userAgentString != null) Parse(userAgentString);
@@ -223,11 +223,11 @@ namespace UserAgentParser
             {
                 if (Regex.IsMatch(_Agent, $"{Regex.Escape(item.Key)}", RegexOptions.IgnoreCase))
                 {
-                    _Platform = item.Value;
+                    Platform = item.Value;
                     return true;
                 }
             }
-            _Platform = "Unknown Platform";
+            Platform = "Unknown Platform";
             return false;
         }
 
@@ -238,9 +238,9 @@ namespace UserAgentParser
                 var match = Regex.Match(_Agent, $@"{item.Key}.*?([0-9\.]+)", RegexOptions.IgnoreCase);
                 if (match.Success)
                 {
-                    _IsBrowser = true;
-                    _Version = match.Groups[1].Value;
-                    _Browser = item.Value;
+                    IsBrowser = true;
+                    Version = match.Groups[1].Value;
+                    Browser = item.Value;
                     SetMobile();
                     return true;
                 }
@@ -254,8 +254,8 @@ namespace UserAgentParser
             {
                 if (Regex.IsMatch(_Agent, $"{Regex.Escape(item.Key)}", RegexOptions.IgnoreCase))
                 {
-                    _IsRobot = true;
-                    _Robot = item.Value;
+                    IsRobot = true;
+                    Robot = item.Value;
                     SetMobile();
                     return true;
                 }
@@ -269,76 +269,12 @@ namespace UserAgentParser
             {
                 if (_Agent.IndexOf(item.Key, StringComparison.OrdinalIgnoreCase) != -1)
                 {
-                    _IsMobile = true;
-                    _Mobile = item.Value;
+                    IsMobile = true;
+                    Mobile = item.Value;
                     return true;
                 }
             }
             return false;
-        }
-
-        public bool IsBrowser(string key = null)
-        {
-            if (!_IsBrowser)
-            {
-                return false;
-            }
-            if (key == null)
-            {
-                return true;
-            }
-            return (browsers.ContainsKey(key) && _Browser == browsers[key]);
-        }
-
-        public bool IsRobot(string key = null)
-        {
-            if (!_IsRobot)
-            {
-                return false;
-            }
-            if (key == null)
-            {
-                return true;
-            }
-            return (robots.ContainsKey(key) && _Robot == robots[key]);
-        }
-
-        public bool IsMobile(string key = null)
-        {
-            if (!_IsMobile)
-            {
-                return false;
-            }
-            if (key == null)
-            {
-                return true;
-            }
-            return (mobiles.ContainsKey(key) && _Mobile == mobiles[key]);
-        }
-
-        public string Platform()
-        {
-            return _Platform;
-        }
-
-        public string Browser()
-        {
-            return _Browser;
-        }
-
-        public string Version()
-        {
-            return _Version;
-        }
-
-        public string Robot()
-        {
-            return _Robot;
-        }
-
-        public string Mobile()
-        {
-            return _Mobile;
         }
 
     }

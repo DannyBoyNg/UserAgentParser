@@ -10,6 +10,7 @@
     <PackageLicenseUrl>https://raw.githubusercontent.com/DannyBoyNg/UserAgentParser/master/LICENSE</PackageLicenseUrl>
     <PackageTags>useragentparser user agent parse browser client detect detection</PackageTags>
     <Description>A library to parse user-agent strings in C#.</Description>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
 </Project>

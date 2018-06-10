@@ -4,7 +4,7 @@ A library to parse user-agent strings in C#.
 
 ## Dependancies
 
-.Net Standard 2
+None
 
 ## Installing
 

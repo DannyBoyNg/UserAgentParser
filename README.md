@@ -1,4 +1,5 @@
 ## UserAgentParser is now DEPRECATED in favor of UserAgentService. 
+[UserAgentService](https://github.com/DannyBoyNg/UserAgentService)  
 
 # UserAgentParser
 

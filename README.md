@@ -1,4 +1,4 @@
-## DannyBoyNg.UserAgentParser is now DEPRECATED in favor of DannyBoyNg.UserAgentService. 
+## UserAgentParser is now DEPRECATED in favor of UserAgentService. 
 
 # UserAgentParser
 

@@ -1,3 +1,5 @@
+## DannyBoyNg.UserAgentParser is now DEPRECATED in favor of DannyBoyNg.UserAgentService. 
+
 # UserAgentParser
 
 A library to parse user-agent strings in C#. UserAgentParser uses memoization for added performance. Caching will not store more than 10.000 different user agent strings to prevent memory leaks.
